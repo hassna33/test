@@ -29,22 +29,21 @@ function receiveDataFromBoxes(arr) {
 
     //Execute when the specific checkbox selected
     $("#isSelected" + i).click(function() {
+      $(this).addClass("delete-checkbox");
       var $myDiv = $(this);
+     
 
       //To access the location of both checkbox and texts
       var obj = {
         sku: $myDiv.siblings("#skuValue").text(),
-        name: $myDiv.parent().siblings().children("#nameValue").text(),
-        price: $myDiv.parent()
-          .siblings().children("#priceValue")
+        name: $myDiv.siblings("#nameValue").text(),
+        price: $myDiv.siblings().children("#priceValue")
           .find("text")
           .text(),
-        unique: $myDiv.parent()
-          .siblings().children("#uniqueValue")
+        unique: $myDiv.siblings("#uniqueValue")
           .find("text")
           .text(),
-        handlerType: $myDiv.parent()
-          .siblings().children("#uniqueValue")
+        handlerType: $myDiv.siblings("#uniqueValue")
           .find("span")
           .text()
       };
@@ -122,7 +121,7 @@ function createBoxTemplates(myType, i) {
   var cheader = $("<div></div>");
   var cbody = $("<div></div>");
   var skuDiv = $("<span>" + Object.values(myType)[0] + "</span>");
-  var nameDiv = $("<div>" + Object.values(myType)[1] + "</div>");
+  var nameDiv = $("<div><text>" + Object.values(myType)[1] + "</text></div>");
   var priceDiv = $(
     "<div><text>" + Object.values(myType)[2] + "</text> $</div>"
   );
@@ -158,16 +157,15 @@ function createBoxTemplates(myType, i) {
 	//Add all div's into the p tag
 	
 	
-  newP.addClass("card shadow-lg row-col-3");
+  newP.addClass("card shadow-lg mt-3");
 
   cheader.addClass("card-header");
   cbody.addClass("card-body");
   nameDiv.addClass("card-text");
   priceDiv.addClass("card-text");	
   skuDiv.addClass("card-text");	
-  choice.addClass("check");
-  choice.appendTo(cheader);
-  skuDiv.appendTo(cheader);
+  choice.appendTo(cbody);
+  skuDiv.appendTo(cbody);
    nameDiv.appendTo(cbody);
   priceDiv.appendTo(cbody);
   uniqueDiv.appendTo(cbody);
