@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 
-$("#switcher").change(function() {
+$("#productType").change(function() {
   var id = $(this)
     .children(":selected")
     .prop("id");
@@ -20,31 +20,29 @@ $("#switcher").change(function() {
     //Insert textbox and into the div recently created
     $("<input />", {
       type: "text",
-      id: "weightInput",
+      id: "weight",
       value: "",
       name: "weight",
 	  required: "true"
     }).addClass('form-control').appendTo(div);
 	$('<label for="floatingTextInput4">Weight (Please provide the weight attribute in Kg)</label>').appendTo(div);
-  } else if (id === "furniture_option") {
-    // Clear child elements added before
+  } 
+  else if (id === "furniture_option") {
+    //Clear child elements added before
     $("#SwitcherBoxes").empty();
     $("#theCard").removeClass("dvd book");
     $("#theCard").addClass("furniture");
 
-
     //Create a div
-    var div = $("<div></div>");
-
-
-    $("#SwitcherBoxes").append(div);
-
+     var div = $("<div></div>");
+     $("#SwitcherBoxes").append(div);
+ 
     //Insert textbox and into the div recently created
 	var div1 = $("<div></div>");
 	div1.addClass("form-floating mb-3");    //Append the div into "SwitcherBoxes" div
     $("<input />", {
       type: "text",
-      id: "heightInputbox",
+      id: "height",
       value: "",
       name: "height",
 	  required: "true"
@@ -56,7 +54,7 @@ $("#switcher").change(function() {
     div2.addClass("form-floating mb-3");    //Append the div into "SwitcherBoxes" div
     $("<input />", {
       type: "text",
-      id: "widthInputbox",
+      id: "width",
       value: "",
       name: "width",
 	  required: "true"
@@ -68,7 +66,7 @@ $("#switcher").change(function() {
     div3.addClass("form-floating mb-3");    
 	$("<input />", {
       type: "text",
-      id: "lengthInputbox",
+      id: "length",
       value: "",
       name: "length",
 	  required: "true"
@@ -92,7 +90,7 @@ $("#switcher").change(function() {
     //Insert textbox and into the div recently created
     $("<input />", {
       type: "text",
-      id: "SizeInputbox",
+      id: "size",
       value: "",
       name: "size",
 	  required: "true"
@@ -102,7 +100,7 @@ $("#switcher").change(function() {
   }
 });
 
-    $('#switcher').trigger('change');
+    $('#productType').trigger('change');
 
 
 });
@@ -122,7 +120,7 @@ function PostRequest() {
     .find('input[name="sku"]')
     .val();
 
-  var name = $("#newProductDiv")
+  var cname = $("#newProductDiv")
     .find('input[name="name"]')
     .val();
 
@@ -156,7 +154,7 @@ function PostRequest() {
   // Use given data post to the server
   var obj = {
     sku: sku,
-    name: name,
+    name: cname,
     price: price,
     weight: weight,
     size: size,
@@ -168,10 +166,17 @@ function PostRequest() {
     .post("http://localhost/test/server/index.php", obj)
     .then(function(response) {
       console.log(response);
-	  window.location.href='index.html';
     })
     .catch(function(error) {
       console.log(error);
     });
 
 }
+
+$(document).on("submit", "#product_form", function(e){
+  e.preventDefault();
+  PostRequest();
+  window.location.replace("index.html");
+  // Other code here
+});
+
