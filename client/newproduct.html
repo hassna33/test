@@ -15,55 +15,50 @@
    <div id="theCard" class="card mx-3 mt-n5 shadow-lg book" style="border-radius: 10px; border-left:8px solid; border-right: none; border-top:none; border-bottom:none">
     <div class="card-body" id="newProductDiv" >
       <h4 class="card-title mb-3 text-primary text-uppercase">Add Product</h4>
-      <form onsubmit="PostRequest(); return false" >
+      <form id="product_form" >
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingTextInput1" name="sku" required >
-              <label for="floatingTextInput1">Sku</label>
+              <input type="text" class="form-control" id="sku" name="sku" required >
+              <label for="sku">Sku</label>
             </div>
           </div>
           <div class="col">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingTextInput2" name="name" required >
-              <label for="floatingTextInput2" >Name</label>
+              <input type="text" class="form-control" id="name" name="name" required >
+              <label for="name" >Name</label>
             </div>
           </div>
         </div>
 		<div class="row">
-		<div class="col">
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="floatingTextInput3" name="price" required >
-          <label for="floatingTextInput3">Price</label>
+		 <div class="col">
+           <div class="form-floating mb-3">
+             <input type="text" class="form-control" id="price" name="price" required >
+             <label for="price">Price</label>
+           </div>
+		 </div>
+	     <div class="col">
+		   <div class="form-floating mb-3">
+             <select class="form-select" id="productType" name="sellist">
+               <option value="BOOK" id="book_option" >Book</option>
+               <option value="DVD" id="dvd_option">Dvd</option>
+               <option value="FURNITURE" id="furniture_option">Furniture</option>
+             </select>
+             <label for="switcher" class="form-label">Type</label>
+           </div>
+          </div>
         </div>
-		</div>
-	    <div class="col">
-		<div class="form-floating mb-3">
-  <select class="form-select" id="switcher" name="sellist">
-          <option value="sku" id="book_option" >Book</option>
-          <option value="name" id="dvd_option">Dvd</option>
-          <option value="price" id="furniture_option">Furniture</option>
-  </select>
-  <label for="switcher" class="form-label">Type</label>
-</div></div></div>
 	    <div id="SwitcherBoxes" class="form-floating mb-3" ></div>		
-        
-		<button type="submit" class="btn btn-primary" >Save</button>
-	    <button type="button" class="btn btn-primary" onclick="Back()" >Cancel</button>
-
-
+		  <button type="submit" value="ADD" class="btn btn-primary" >Save</button>
+	      <button type="button" class="btn btn-primary" onclick="Back()" >Cancel</button>
       </form>
+     </div>
     </div>
-  </div>
-</div>
-
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="newproduct-script.js"></script>
-
-
+   </div>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="newproduct-script.js"></script>
 </body>
 </html>
